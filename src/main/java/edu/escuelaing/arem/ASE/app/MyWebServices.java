@@ -12,14 +12,34 @@ public class MyWebServices {
      * @throws IOException 
      */
     public static void main( String[] args ) throws IOException, URISyntaxException{
-        HttpServer.get("/arep", () -> {
-            String resp = "HTTP/1.1 200 Ok\r\n"
-            + "Content-Type:text/html\r\n"
-            + "\r\n"
-            + "Hello AREP!";
-            return resp;
+        HttpServer server = HttpServer.getInstance();
+
+        server.staticFiles.location("/public");
+
+        server.get("/hello", (req, res) -> "Hello World");
+
+        server.get("/get-json", (req, res) -> {
+            res.type("application/json");
+            return "{\"name\": \"Santiago\"}";
         });
 
-        HttpServer.getInstance().runServer(args);
+        server.get("/get-css", (req, res) -> {
+            res.type("text/css");
+            return "* {\n" +
+                    "    font-family: sans-serif;\n" +
+                    "    background-color: #f5f6fa;\n" +
+                    "}";
+        });
+
+        server.post("/json-post", (req, res) -> {
+            res.type("application/json");
+            return "{\"name\": \"Santiago\"}";
+        });
+
+
+
+        server.run(args);
+
     }
 }
+
