@@ -72,12 +72,15 @@ Los requerimientos del taller solicitan probar el funcionamiento del proyecto en
 3. **POST**
 
     La configuración del servicio se da de la siguiente forma:
+   
     ![](img/codigo3.png)
+   
     Para probarlo fue necesario construir un html que hiciera referenica la post y nos entregara algo al momento de llamar el recurso:
     ```
     http://127.0.0.1:35000/post-test-html
     ```
     y se ve en el browser de la siguiente forma:
+   
     ![](img/post-test.png)
 
 ### Linux
